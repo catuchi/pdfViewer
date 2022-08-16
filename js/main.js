@@ -13,4 +13,11 @@ const scale = 1.5,
 function renderPage(num) {}
 
 // Get Document
-pdfJsLib.getDocument(url).promise.then((pdfDoc) => {});
+pdfjsLib.getDocument(url).promise.then((pdfDoc_) => {
+  pdfDoc = pdfDoc_;
+  console.log(pdfDoc);
+
+  document.querySelector("#page-count").textContent = pdfDoc.numPages;
+
+  renderPage(pageNum);
+});
