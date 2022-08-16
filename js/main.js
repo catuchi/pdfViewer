@@ -11,3 +11,6 @@ const scale = 1.5,
 
 // Render the page
 function renderPage(num) {}
+
+// Get Document
+pdfJsLib.getDocument(url).promise.then((pdfDoc) => {});
