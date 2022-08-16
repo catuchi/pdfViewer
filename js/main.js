@@ -39,6 +39,31 @@ function renderPage(num) {
   });
 }
 
+// Check for pages rendering
+const queueRenderPage = (num) => {
+  if (pageIsRendering) {
+    pageNumIsPending = num;
+  } else [renderPage(num)];
+};
+
+// Show previous page
+function showPrevPage() {
+  if (pageNum <= 1) {
+    return;
+  }
+  pageNum--;
+  queueRenderPage(pageNum);
+}
+
+// Show next page
+function showNextPage() {
+  if (pageNum >= pdfDoc.numPages) {
+    return;
+  }
+  pageNum++;
+  queueRenderPage(pageNum);
+}
+
 // Get Document
 pdfjsLib.getDocument(url).promise.then((pdfDoc_) => {
   pdfDoc = pdfDoc_;
